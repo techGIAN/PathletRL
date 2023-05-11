@@ -1,3 +1,7 @@
+# Specific files
+requirements-raw.txt
+requirements-preprocess.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
