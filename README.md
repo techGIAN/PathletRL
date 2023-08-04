@@ -45,3 +45,39 @@ This means that edge ```[273, 272]``` has pathlet ID ```'12267'```. It also mean
 | ```'48612'``` | ```[1364, 0]``` |
 | ```'49547'``` | ```[687, 1]``` |
 | ... | ... |
+
+## Running the Model
+
+1. Place all the datasets to be used under a directory called ```/data/```
+
+2. Run the PathletRL using the following command:
+
+```
+python main_rl.py
+```
+
+## Citation
+
+If you like our work or if you plan to use it, please cite our work with the following Bibtex format:
+
+```
+@INPROCEEDINGS{alix2023pathletrl,
+  author={Alix, Gian and Papagelis, Manos},
+  booktitle={2023 Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems}, 
+  title={PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={},
+  doi={}
+}
+
+```
+
+Or you can also use this citation:
+
+> Gian Alix and Manos Papagelis. 2023. PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning. In Proceedings of Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (SIGSPATIAL ’23). ACM, New York, NY, USA, 12 pages. https://doi.org/XXXXXXX.XXXXXXX
+
+#### Contact
+
+Please contact me gcalix@eecs.yorku.ca for any bugs/issues/questions you may have found on the code.
