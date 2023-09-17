@@ -1,5 +1,5 @@
 # PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning
-A deep learning model based on reinforcement learning to construct trajectory pathlet dictionaries. This is the Github repository of our paper [PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning](https://doi.org/XXXXXXX.XXXXXXX), presented at the 2023 Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems.
+A deep learning model based on reinforcement learning to construct trajectory pathlet dictionaries. This is the Github repository of our paper [PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning](https://doi.org/XXXXXXX.XXXXXXX), recently accepted at the 2023 Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems.
 
 ![pathletrl-architecture](./img/architecture.png)
 
@@ -70,13 +70,33 @@ This means that edge ```[273, 272]``` has pathlet ID ```'12267'```. It also mean
 
 1. Place all the datasets to be used under a directory called ```/data/```
 
-2. You can modify the parameters as you wish in the following file: ```/utils/param_setup.py```. Leave the file as is for default parameters.
+2. There are some parameters that you can modify as you wish in the following file: ```/utils/param_setup.py```. There really is no need to modify it if you wish to leave the parameter values default.
 
 3. Run the PathletRL using the following command:
 
 ```
-python main_rl.py
+python main_rl.py --dataset --model_name --alpha1 --alpha2 --alpha3 --alpha4 --learning_rate --n_iters --collect_steps_per_iteration --n_episodes --replay_buffer_size --batch_size --rep_buff_dset_steps --rep_buff_dset_prefetch --weighted --representability --psa
 ```
+
+Please supply each argument with a value. Below lists the arguments and descriptions of each argument:
+* ```--dataset```: the name of the dataset (note that if you plan to use your own dataset, you have to go and modify some specific parameters in ```/utils/param_setup.py```; please see the file for the example that needs changing.
+* ```--model_name```: the name of the model (the work makes use of DQN and then RND for the ablation experiment)
+* ```--alphaX```: there are four ```alpha``` values each associated with the four objective terms, where ```X``` is either ```1```, ```2```, ```3```, or ```4``` (all ```alphaX``` values should sum to 1)
+* ```--learning_rate```: the learning rate
+* ```--n_iters```: the number of iterations for running the model
+* ```--collect_steps_per_iteration```: the number of data collect steps for each iteration
+* ```--n_episodes```: the number of episodes for each of the ```n_iters``` iterations
+* ```--replay_buffer_size```: the size of the replay buffer
+* ```--batch_size```: the batch size
+* ```--rep_buff_dset_steps```: the number of steps for the replay buffer for the dataset
+* ```--rep_buff_dset_prefetch```: the number of prefetch for the replay buffer for the dataset
+* ```--weighted```: if we consider a weighted model?
+* ```--representability```: if trajectory representability is considered?
+* ```--psa```: if we want to conduct parameter sensitivity analysis? If that's the case, then modify some specific parameters in ```/utils/param_setup.py```; please see the file for the example that needs changing.
+
+## Other Notes
+Note that if it cannot find some folder, then you would have to create the directory as required. If it cannot find some file, it might be stored in another directory.
+
 
 ## Citation
 
@@ -99,6 +119,6 @@ Or you can also use this citation:
 
 > Gian Alix and Manos Papagelis. 2023. PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning. In Proceedings of Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (SIGSPATIAL ’23). ACM, New York, NY, USA, 12 pages. [https://doi.org/XXXXXXX.XXXXXXX](https://doi.org/XXXXXXX.XXXXXXX)
 
-#### Contact
+## Contact
 
 Please contact me gcalix@eecs.yorku.ca for any bugs/issues/questions you may have found on our code. Thank you so much.
