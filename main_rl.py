@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 import base64
 import os
+import argparse
 
 from utils.util_func import read_datasets
 from utils.util_func import read_json_dict
@@ -49,10 +50,52 @@ from tf_agents.drivers import dynamic_episode_driver
 import warnings
 warnings.filterwarnings("error")
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", type=str, help='dataset')
+    parser.add_argument("--model_name", type=str, default="DQN", help='model_name')
+    parser.add_argument("--alpha1", type=float, default="0.25", help='alpha1')
+    parser.add_argument("--alpha2", type=float, default="0.25", help='alpha2')
+    parser.add_argument("--alpha3", type=float, default="0.25", help='alpha3')
+    parser.add_argument("--alpha4", type=float, default="0.25", help='alpha4')
+    parser.add_argument("--learning_rate", default="0.001", type=float, help='learning rate')
+    parser.add_argument("--n_iters", type=int, default="100", help='number of iterations')
+    parser.add_argument("--collect_steps_per_iteration", type=int, help='data collection for how many steps per each iteration?')
+    parser.add_argument("--n_episodes", type=int, default="5", help='number of episodes')
+    parser.add_argument("--replay_buffer_size", type=int, default="100000", help='size of replay buffer')
+    parser.add_argument("--batch_size", default="512", type=int, help='batch size')
+    parser.add_argument("--rep_buff_dset_steps", type=int, help='The number of steps for the replay buffer for the dataset')
+    parser.add_argument("--rep_buff_dset_prefetch", type=int, help='The number of prefetch for the replay buffer for the dataset')
+    parser.add_argument("--weighted", default="True", type=bool, help='weighted?')
+    parser.add_argument("--representability", default="True", type=bool, help='with representability?')
+    parser.add_argument("--psa", default="False", type=bool, help='conduct parameter sensitivity analysis?')
+    
+    return parser.parse_args()
+
 starting_time = time.perf_counter()
 print(f'Starting time: {datetime.now()}')
 
-parameters = set_params()
+args = parse_args()
+if args.alpha1 + args.alpha2 + args.alpha3 + args.alpha4 != 1:
+    print("The alpha values do not add up to 1. Please try again.")
+    exit()
+
+parameters = set_params(args.dataset,
+                        args.model_name,
+                        args.alpha1,
+                        args.alpha2,
+                        args.alpha3,
+                        args.alpha4,
+                        args.learning_rate,
+                        args.n_iters,
+                        args.collect_steps_per_iteration,
+                        args.n_episodes,
+                        args.replay_buffer_size, 
+                        args.rep_buff_dset_steps,
+                        args.rep_buff_dset_prefetch,
+                        args.weighted,
+                        args.representability,
+                        args.psa)
 
 my_edge_dict, my_edge_rev_dict, my_traj_pathlets_dict, my_traj_edge_dict = read_datasets(parameters['data_name'])
 

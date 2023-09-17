@@ -2,7 +2,7 @@ import json
 import numpy as np
 import random as rnd
 import time
-from datetime import datetime
+from datetime import dt
 import os
 
 
@@ -262,7 +262,7 @@ def read_datasets(data_name):
         reduced = 'reduced_'
     pathlets_json_files = ['./data/' + data_name + '/' + reduced + 'pathlet' + txt +  '_dict.json' for txt in ['', '_rev']]
     my_edge_dict = read_json_dict(pathlets_json_files[0])
-    my_edge_rev_dict = read_json_dict(pathlets_json_files[1])
+    my_edge_rev_dict = read_json_dict(pathlet_json_files[1])
 
     traj_json_files = ['./data/' + data_name + '/' + reduced + 'traj_' + txt +  '_dict.json' for txt in ['pathlets', 'edge']]
     my_traj_pathlets_dict = read_json_dict(traj_json_files[0])
