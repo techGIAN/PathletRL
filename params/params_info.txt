@@ -1,5 +1,0 @@
-There are two types of parameters:
-
-1) Required parameters - these are the parameters which you need to set prior to running the model (See Step 3 of the ReadMe.md in the Github repo for more information)
-
-2) Optional parameters - these are those that do not need to be set or modified prior to running the model; you can leave those as default if you like or change them if need be (See Step 2 of the ReadMe.md in the Github repo for more information)
