@@ -1,6 +1,7 @@
 # Specific files
 requirements-raw.txt
 requirements-preprocess.py
+*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
