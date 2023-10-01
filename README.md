@@ -4,7 +4,15 @@ A deep learning model based on reinforcement learning to construct trajectory pa
 ![pathletrl-architecture](./img/architecture.png)
 
 ## Abstract
-Sophisticated location and tracking technologies have led to the generation of vast amounts of [trajectory data](https://doi.org/10.1145/2743025). Of interest is constructing a small set of basic building blocks that can represent a wide range of trajectories, known as a *trajectory pathlet dictionary*. This dictionary can be useful in various tasks and applications, such as [trajectory compression](https://www.cs.albany.edu/~jhh/publications/muckell.gis10.gps.pdf), [travel time estimation](https://dl.acm.org/doi/10.1109/ITSC48978.2021.9564901), [route planning](https://ieeexplore.ieee.org/document/9137965), and [navigation services](https://en.wikipedia.org/wiki/Navigation_system). Existing methods for constructing a pathlet dictionary use a top-down approach, which generates a large set of candidate pathlets and selects the most popular ones to form the dictionary. However, this approach is memory-intensive and leads to redundant storage due to the assumption that pathlets can overlap. To address these limitations, we propose a bottom-up approach for constructing a pathlet dictionary that significantly reduces memory storage needs of baseline methods by multiple orders of magnitude (by up to 24K times better). The key idea is to initialize unit-length pathlets and iteratively merge them, while [maximizing utility](https://link.springer.com/book/10.1007/978-3-540-34183-3). The [utility](https://en.wikipedia.org/wiki/Utility) is defined using newly introduced metrics of *trajectory loss* and *trajectory representability*. A deep reinforcement learning method is proposed, <ins>**PathletRL**</ins>, that uses Deep Q Networks (DQN) to approximate the utility function. Experiments show that our method outperforms the current state-of-the-art, both on synthetic and real-world data. Our method can reduce the size of the constructed dictionary by up to 65.8% compared to other methods. It is also shown that only half of the pathlets in the dictionary is needed to reconstruct 85% of the original trajectory data. 
+Sophisticated location and tracking technologies have led to the generation of vast amounts of [trajectory data](https://doi.org/10.1145/2743025). Of interest is constructing a small set of basic building blocks that can represent a wide range of trajectories, known as a *trajectory pathlet dictionary*. This dictionary can be useful in various tasks and applications, such as [trajectory compression](https://www.cs.albany.edu/~jhh/publications/muckell.gis10.gps.pdf), [travel time estimation](https://dl.acm.org/doi/10.1109/ITSC48978.2021.9564901), [route planning](https://ieeexplore.ieee.org/document/9137965), and [navigation services](https://en.wikipedia.org/wiki/Navigation_system). Existing methods for constructing a pathlet dictionary use a top-down approach, which generates a large set of candidate pathlets and selects the most popular ones to form the dictionary. However, this approach is memory-intensive and leads to redundant storage due to the assumption that pathlets can overlap. To address these limitations, we propose a bottom-up approach for constructing a pathlet dictionary that significantly reduces memory storage needs of baseline methods by multiple orders of magnitude (by up to 24K times better). The key idea is to initialize unit-length pathlets and iteratively merge them, while [maximizing utility](https://link.springer.com/book/10.1007/978-3-540-34183-3). The [utility](https://en.wikipedia.org/wiki/Utility) is defined using newly introduced metrics of *trajectory loss* and *trajectory representability*. A deep reinforcement learning method is proposed, <ins>**PathletRL**</ins>, that uses [Deep Q Networks (DQN)](https://arxiv.org/abs/1312.5602) to approximate the utility function. Experiments show that our method outperforms the current state-of-the-art, both on synthetic and real-world data. Our method can reduce the size of the constructed dictionary by up to 65.8% compared to other methods. It is also shown that only half of the pathlets in the dictionary is needed to reconstruct 85% of the original trajectory data. 
+
+## Pathlets
+
+<p align="center">
+  <img src="./img/pathlets.png" />
+</p>
+
+**Pathlets** are basically subpaths of the road network. In our setup, we frame pathlets as *edge-disjoint*, which means that no two pathlets are overlapping (in terms of edges). In the example above, (a) represents the graph-based representation of a road network in a small area in Toronto, and (b) are some examples of edge-disjoint pathlets of various lengths.
 
 ## Requirements
 The code was run in Ubuntu machines, but it can also be run on Macs (based on the packages listed in ```requirements.txt```; for example ```tensorflow-macos``` is specifically for the Mac). In general you can install most of the packages using the following command. 
@@ -111,13 +119,14 @@ If you like our work or if you plan to use it, please cite our work with the fol
   volume={},
   number={},
   pages={},
-  doi={https://doi.org/XXXXXXX.XXXXXXX}
+  doi={https://doi.org/10.1145/3589132.3625622}
 }
 ```
 
-Or you can also use this citation:
+Or you can also use this ACM citation:
 
-> Gian Alix and Manos Papagelis. 2023. PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning. In Proceedings of Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (SIGSPATIAL ’23). ACM, New York, NY, USA, 12 pages. [https://doi.org/XXXXXXX.XXXXXXX](https://doi.org/XXXXXXX.XXXXXXX)
+> Gian Alix and Manos Papagelis. 2023. PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning. In The 31st ACM International Conference on Advances in Geographic Information Systems (SIGSPATIAL ’23), November 13–16, 2023, Hamburg, Germany. ACM, New York, NY,
+USA, 12 pages. https://doi.org/10.1145/3589132.3625622
 
 ## Contact
 
