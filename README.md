@@ -1,5 +1,7 @@
 # PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning
-A deep learning model based on reinforcement learning to construct trajectory pathlet dictionaries. This is the Github repository of our paper [PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning](https://doi.org/XXXXXXX.XXXXXXX), recently accepted at the 2023 Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems.
+A deep learning model based on reinforcement learning to construct trajectory pathlet dictionaries. This is the Github repository of our paper [PathletRL: Trajectory Pathlet Dictionary Construction using Reinforcement Learning](https://doi.org/10.1145/3589132.3625622), recently accepted at the 2023 Proceedings of the 31st ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (nominated for Best Paper Award!).
+
+The paper is available in the given DOI link (see at the end of this README), if not accessible, see: https://drive.google.com/drive/folders/1C20g9dzVb_lhyIas2U96nAuqXOZUmZtJ?usp=sharing
 
 ![pathletrl-architecture](./img/architecture.png)
 
