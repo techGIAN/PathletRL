@@ -86,7 +86,7 @@ tfp-nightly == 0.20.0.dev20230107
 tornado == 6.2
 traitlets == 5.8.0
 typing_extensions == 4.4.0
-urllib3 == 1.26.13
+urllib3 == 1.26.18
 wcwidth == 0.2.5
 Werkzeug == 2.2.2
 wheel == 0.38.4
